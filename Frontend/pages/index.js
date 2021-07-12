@@ -1,11 +1,11 @@
-import style from 'styles/pages/Index.module.css';
-import Head_Main from 'heads/Main.head';
+import style from "styles/pages/Index.module.css";
+import Head_Main from "heads/Main.head";
 import {
   Body,
   Section,
   Content,
-} from 'components/timoideas/Timoideas.components';
-import BienvenidaSockets from 'components/SocketsSaludo.component';
+} from "components/timoideas/Timoideas.components";
+import BienvenidaSockets from "components/SocketsSaludo.component";
 
 export default function Index() {
   return (
@@ -14,7 +14,7 @@ export default function Index() {
       <Body>
         <Section>
           <Content center flex={0.5}>
-            <h1 className={style.Title}>Cammilavra</h1>
+            <h1 className={style.Title}>Welcome</h1>
             <BienvenidaSockets />
           </Content>
         </Section>
