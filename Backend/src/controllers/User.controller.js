@@ -17,10 +17,17 @@ export async function GETuser(req, res) {
     res.status(200).json({ ok: false, message });
   }
 }
-export async function GETuser(req, res) {
+export async function POSTuser(req, res) {
   try {
-    const { id } = req.params;
-    const userDB = await UserSchema.findById(id);
+    const body = await ValidateObject(req.body, [
+      'Name',
+      'Username',
+      'Mail',
+      'Telefono',
+      'Password',
+    ]);
+    const user = new UserSchema(body);
+    const userDB = await user.save();
     res.status(200).json({ ok: true, data: userDB });
   } catch ({ message }) {
     res.status(200).json({ ok: false, message });
