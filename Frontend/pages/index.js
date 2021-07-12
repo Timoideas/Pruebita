@@ -24,6 +24,9 @@ export default function Index() {
               onClick={(e) => {
                 setName(e.target.value);
               }}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
               placeholder='name'
             />
             <input
@@ -34,7 +37,7 @@ export default function Index() {
               placeholder='username'
             />
             <input
-              type='text'
+              type='password'
               onClick={(e) => {
                 setPassword(e.target.value);
               }}
