@@ -1,4 +1,4 @@
-import UserSchema from '../models/User.schema';
+import UserSchema from "../models/User.schema";
 
 export async function GETusers(req, res) {
   try {
@@ -22,7 +22,7 @@ export async function POSTuser(req, res) {
     // const body = await ValidateObject(req.body, ['']);
     // const user = new UserSchema(body);
     // const userDB = await user.save();
-    res.status(200).json({ ok: true, data: 'userDB' });
+    res.status(200).json({ ok: true, data: "message from backend" });
   } catch ({ message }) {
     res.status(200).json({ ok: false, message });
   }
@@ -30,7 +30,7 @@ export async function POSTuser(req, res) {
 export async function PUTuser(req, res) {
   try {
     const { id } = req.params;
-    const body = await ValidateObject(req.body, ['']);
+    const body = await ValidateObject(req.body, [""]);
     const user = await UserSchema.findOneAndUpdate({ _id: id }, body, {
       new: true,
     });

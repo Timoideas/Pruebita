@@ -1,18 +1,18 @@
-import style from 'styles/pages/Index.module.css';
-import Head_Main from 'heads/Main.head';
+import style from "styles/pages/Index.module.css";
+import Head_Main from "heads/Main.head";
 import {
   Body,
   Section,
   Content,
-} from 'components/timoideas/Timoideas.components';
-import { useState } from 'react';
-import fetch from 'node-fetch';
+} from "components/timoideas/Timoideas.components";
+import { useState } from "react";
+import fetch from "node-fetch";
 export default function Index() {
-  const [Name, setName] = useState('');
-  const [Username, setUsername] = useState('');
-  const [Password, setPassword] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Telefono, setTelefono] = useState('');
+  const [Name, setName] = useState("");
+  const [Username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Telefono, setTelefono] = useState("");
   return (
     <>
       <Head_Main />
@@ -20,42 +20,39 @@ export default function Index() {
         <Section>
           <Content center flex={0.5}>
             <input
-              type='text'
-              onClick={(e) => {
-                setName(e.target.value);
-              }}
+              type="text"
               onChange={(e) => {
                 setName(e.target.value);
               }}
-              placeholder='name'
+              placeholder="name"
             />
             <input
-              type='text'
-              onClick={(e) => {
+              type="text"
+              onChange={(e) => {
                 setUsername(e.target.value);
               }}
-              placeholder='username'
+              placeholder="username"
             />
             <input
-              type='password'
-              onClick={(e) => {
+              type="password"
+              onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              placeholder='password'
+              placeholder="password"
             />
             <input
-              type='text'
-              onClick={(e) => {
+              type="text"
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              placeholder='email'
+              placeholder="email"
             />
             <input
-              type='text'
-              onClick={(e) => {
+              type="text"
+              onChange={(e) => {
                 setTelefono(e.target.value);
               }}
-              placeholder='telefono'
+              placeholder="telefono"
             />
             <button
               onClick={async () => {
@@ -66,10 +63,10 @@ export default function Index() {
                   Email,
                   Telefono,
                 };
-                const data = await fetch('http://localhost:4000/users', {
-                  method: 'post',
+                const data = await fetch("http://localhost:4000/users", {
+                  method: "post",
                   body: JSON.stringify(datos),
-                  headers: { 'Content-Type': 'application/json' },
+                  headers: { "Content-Type": "application/json" },
                 });
 
                 const res = await data.json();
