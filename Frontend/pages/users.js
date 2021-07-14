@@ -5,16 +5,17 @@ import {
   Content,
 } from 'components/timoideas/Timoideas.components';
 
-import FetchGetData from 'libraries/fetch/Index.fetch';
+import { GET_Index } from 'libraries/fetch/Index.fetch';
 import useSWR from 'swr';
 export default function Users() {
-  const { data, error } = useSWR('http://localhost:4000/users', FetchGetData);
+  const { data, error } = useSWR(['/users', 'asd'], GET_Index);
   if (error) {
     console.log(error);
   }
   if (data) {
     console.log(data);
   }
+
   return (
     <>
       <Head_Main />
@@ -22,10 +23,17 @@ export default function Users() {
         <Section>
           <Content center>
             <h1>Users</h1>
-            <button>Get data</button>
           </Content>
         </Section>
       </Body>
     </>
   );
+}
+export async function getStaticProps(context) {
+  console.log(process.env.BACKEND);
+  return {
+    props: {
+      data: 'data',
+    },
+  };
 }

@@ -3,8 +3,8 @@ import UserSchema from '../models/User.schema';
 
 export async function GETusers(req, res) {
   try {
-    // const userDB = await UserSchema.find();
-    res.status(200).json({ ok: true, data: 'userDB' });
+    const userDB = await UserSchema.find();
+    res.status(200).json({ ok: true, data: userDB });
   } catch ({ message }) {
     res.status(200).json({ ok: false, message });
   }

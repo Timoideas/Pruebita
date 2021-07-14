@@ -6,8 +6,8 @@ import {
   Content,
 } from 'components/timoideas/Timoideas.components';
 import { useState } from 'react';
-import fetch from 'node-fetch';
-import { FetchPostData } from 'libraries/fetch/Index.fetch';
+import FetchGetData, { FetchPostData } from 'libraries/fetch/Index.fetch';
+import useSWR, { mutate, useSWRInfinite } from 'swr';
 
 export default function Index() {
   const [Name, setName] = useState('');
@@ -15,6 +15,13 @@ export default function Index() {
   const [Password, setPassword] = useState('');
   const [Email, setEmail] = useState('');
   const [Telefono, setTelefono] = useState('');
+
+  const { data, error } = useSWR('http://localhost:4000/users', FetchGetData);
+  if (data) console.log(data);
+  if (error) console.log(error);
+  const handlerMutate = () => {
+    mutate('http://localhost:4000/users', { ...data, data: 'Fernando' }, false);
+  };
   return (
     <>
       <Head_Main />
@@ -36,7 +43,7 @@ export default function Index() {
               placeholder='username'
             />
             <input
-              type='password'
+              type='text'
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -56,19 +63,7 @@ export default function Index() {
               }}
               placeholder='telefono'
             />
-            <button
-              onClick={async () => {
-                await FetchPostData('http://localhost:4000/users', {
-                  Name,
-                  Username,
-                  Password,
-                  Email,
-                  Telefono,
-                });
-              }}
-            >
-              Enviar datos
-            </button>
+            <button onClick={handlerMutate}>Enviar datos</button>
           </Content>
         </Section>
       </Body>
