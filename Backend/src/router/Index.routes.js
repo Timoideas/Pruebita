@@ -4,19 +4,19 @@ const routes = Router();
 import { Index, BadUrl } from '../controllers/Index.controller';
 import { Auth } from '../middlewares/Auth.middleware';
 routes.route('/').get(Auth, Index);
-routes.route('*').get(BadUrl);
 
 import {
-  GETuser,
+  GETusers,
   POSTuser,
   PUTuser,
   DELETEuser,
 } from '../controllers/User.controller';
 routes
   .route('/users')
-  .get(GETuser)
+  .get(GETusers)
   .post(POSTuser)
   .put(PUTuser)
   .delete(DELETEuser);
 
+routes.route('*').get(BadUrl);
 export default routes;

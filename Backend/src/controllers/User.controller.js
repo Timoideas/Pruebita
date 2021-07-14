@@ -1,9 +1,10 @@
+import { ValidateObject } from '../libraries/Validate';
 import UserSchema from '../models/User.schema';
 
 export async function GETusers(req, res) {
   try {
-    const userDB = await UserSchema.find();
-    res.status(200).json({ ok: true, data: userDB });
+    // const userDB = await UserSchema.find();
+    res.status(200).json({ ok: true, data: 'userDB' });
   } catch ({ message }) {
     res.status(200).json({ ok: false, message });
   }
@@ -19,10 +20,11 @@ export async function GETuser(req, res) {
 }
 export async function POSTuser(req, res) {
   try {
+    console.log(req.body);
     const body = await ValidateObject(req.body, [
       'Name',
       'Username',
-      'Mail',
+      'Email',
       'Telefono',
       'Password',
     ]);
